@@ -1,0 +1,65 @@
+create database arroz_colorido;
+use arroz_colorido;
+show databases;
+show schema;
+
+show tables;
+
+CREATE TABLE FUNCIONARIO
+(Pnome VARCHAR(15) NOT NULL,
+Minicial CHAR,
+Unome VARCHAR(15) NOT NULL,
+Cpf CHAR(11) NOT NULL,
+Datanasc DATE,
+Endereço VARCHAR(30),
+Sexo CHAR,
+Salario DECIMAL(10, 2),
+Cpf_supervisor CHAR(11) NOT NULL,
+Dnr INT,
+PRIMARY KEY(Cpf)
+);
+
+CREATE TABLE DEPARTAMENTO
+( Dnome VARCHAR(15) NOT NULL,
+Dnumero INT NOT NULL,
+Cpf_gerente CHAR(11) NOT NULL,
+Data_inicio_gerente DATE, 
+PRIMARY KEY (Dnumero),
+UNIQUE (Dnome),
+FOREIGN KEY (Cpf_gerete) REFERENCES FUNCIONARIO(Cpf) );   
+
+
+INSERT INTO funcionario
+VALUES
+("nath",
+"n",
+"fc",
+"1701005",
+"2001/01/01",
+"rua das minhocas",
+"F",
+"120.500",
+"777777777",
+"1");
+
+select * from funcionario;
+
+
+INSERT INTO 'empresa'.'departamento'
+('Dnome','Dnumero','Cpf_gerente','Data_inicio_gerente')
+VALUES
+("RM",
+1,
+"7777777777",
+"6545464646");
+
+
+select Pnome from funcionario;   /*seleciono TUDO que tem em funcionario*/
+
+update funcionario  /*para mudar alguma informação*/
+set Pnome = 'NATAXA'  /*escolho uma variavel para mudar e escrevo a informação*/
+where Cpf = '1701005'  /*esfecifico com uma inform unica, para não ocorrer erro de mudar tudo*/
+
+
+drop table funcionarios;  /*serve pra apagar minha tabela*/
+
